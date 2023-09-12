@@ -6,7 +6,7 @@ type Props = IInputProps & {
 export default function Input({messageError = null, ...rest }: Props) {
  return (
         <NativeBaseInput
-            bg="gray.700"
+            bg="gray.300"
             fontSize="md"
             flex={1} 
             mb={4}

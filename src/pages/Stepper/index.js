@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import * as Animatable from "react-native-animatable";
 
-import { StepOne } from "../StepOne";
-import { StepTwo } from "../StepTwo";
-import { StepThree } from "../StepThree";
+import { Box, CheckIcon, Text, HStack, Center } from "native-base";
+
+import { StepOne } from "../../components/StepOne";
+import { StepTwo } from "../../components/StepTwo";
+import { StepThree } from "../../components/StepThree";
+import CircleCustom from "../../icons/CircleCustom";
 
 export default function Stepper() {
   const [step, setStep] = useState(0);
+
   const [stepOneValues, setStepOneValues] = useState({
     altSelimInputValue: "",
     desSelimInputValue: "",
@@ -43,6 +47,39 @@ export default function Stepper() {
           Setup da Bike
         </Animatable.Text>
       </View>
+      <Center>
+        <HStack w="full" my={2} justifyContent="space-around">
+          <CircleCustom size={8} color="red.500" title="Pré-fit">
+            {step === 0 ? (
+              <Text fontSize="lg" fontWeight="bold" color="white">
+                1
+              </Text>
+            ) : (
+              <CheckIcon size={6} color="white" />
+            )}
+          </CircleCustom>
+
+          <CircleCustom size={8} color="red.500" title="Pós-fit">
+            {step <= 1 ? (
+              <Text fontSize="lg" fontWeight="bold" color="white">
+                2
+              </Text>
+            ) : (
+              <CheckIcon size={6} color="white" />
+            )}
+          </CircleCustom>
+
+          <CircleCustom size={8} color="red.500" title="Gerar relatório">
+            {step <= 2 ? (
+              <Text fontSize="lg" fontWeight="bold" color="white">
+                3
+              </Text>
+            ) : (
+              <CheckIcon size={6} color="white" />
+            )}
+          </CircleCustom>
+        </HStack>
+      </Center>
       <View style={styles.divider} />
       <Animatable.View style={styles.containerStepper}>
         {step == 0 ? (
@@ -84,7 +121,7 @@ const styles = StyleSheet.create({
   divider: {
     marginTop: 15,
     borderBottomWidth: 3,
-    width: "95%",
+    width: "100%",
     alignSelf: "center",
     borderColor: "#a1a1a1",
   },

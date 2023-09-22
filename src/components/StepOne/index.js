@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { VStack, HStack, Center, Heading } from "native-base";
-import Input from "../../components/Input/input";
-import { Button } from "../../components/Button/Button";
+import Input from "../Input/input";
+import { Button } from "../Button/Button";
 
 export function StepOne({ step, setStep, stepOneValues, setStepOneValues }) {
   const [stepOneFormValues, setStepOneFormValues] = useState(stepOneValues);
